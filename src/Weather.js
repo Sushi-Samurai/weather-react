@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Dna } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function Weather(props) {
   function handleResponse(response) {
@@ -12,13 +12,15 @@ export default function Weather(props) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(handleResponse);
   return (
-    <Dna
-      visible={true}
+    <ThreeDots
       height="80"
       width="80"
-      ariaLabel="dna-loading"
+      radius="9"
+      color="turquoise"
+      ariaLabel="three-dots-loading"
       wrapperStyle={{}}
-      wrapperClass="dna-wrapper"
+      wrapperClassName=""
+      visible={true}
     />
   );
 }
