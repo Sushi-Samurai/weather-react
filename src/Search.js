@@ -8,24 +8,24 @@ export default class Search extends Component {
     };
   }
 
-  _handleChange = (event) => {
+  handleChange = (event) => {
     this.setState({ value: event.target.value });
   };
 
-  _submit = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.refresh(this.state.value);
   };
 
   render() {
     return (
-      <form className="float-left" onSubmit={this._submit}>
+      <form className="float-left" onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="Enter a city"
           autoComplete="off"
           autoFocus={true}
-          onChange={this._handleChange}
+          onChange={this.handleChange}
           value={this.state.value}
         />
         <input type="submit" value="Search" className="btn btn-primary" />
