@@ -34,7 +34,7 @@ export default class Weather extends Component {
           description: response.data.weather[0].main,
           icon: response.data.weather[0].icon,
           precipitation: Math.round(response.data.main.humidity) + "%",
-          temperature: Math.round(response.data.main.temp) + "°F",
+          temperature: Math.round(response.data.main.temp),
           time: new DateUtil(new Date(response.data.dt * 1000)).dayTime(),
           wind: Math.round(response.data.wind.speed) + "mph",
         },
@@ -71,7 +71,6 @@ export default class Weather extends Component {
                 {this.state.weather.description}
               </div>
             </div>
-
             <div className="row">
               <div className="col-sm-6">
                 <div className="clearfix">
@@ -81,7 +80,9 @@ export default class Weather extends Component {
                   <div className="weather-temp weather-temp--today">
                     {this.state.weather.temperature}
                   </div>
-                  <div className="weather-unit__text weather-unit__text--today"></div>
+                  <div className="weather-unit__text weather-unit__text--today">
+                    °F
+                  </div>
                 </div>
               </div>
               <div className="col-sm-6">
