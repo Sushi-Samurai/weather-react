@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import "./Weather.css";
 import WeatherIcon from "./WeatherIcon";
 import CurrentLocation from "./CurrentLocation";
 import Search from "./Search";
 import DateUtil from "./DateUtil";
 import Api from "./Api";
 import Forecast from "./Forecast";
+
+import "./Weather.css";
 
 import { ThreeDots } from "react-loader-spinner";
 
@@ -80,9 +81,7 @@ export default class Weather extends Component {
                   <div className="weather-temp weather-temp--today">
                     {this.state.weather.temperature}
                   </div>
-                  <div className="weather-unit__text weather-unit__text--today">
-                    °C
-                  </div>
+                  <div className="weather-unit__text weather-unit__text--today"></div>
                 </div>
               </div>
               <div className="col-sm-6">
