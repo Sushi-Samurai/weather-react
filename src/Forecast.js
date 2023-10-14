@@ -20,7 +20,7 @@ export default class Forecast extends Component {
   }
 
   refresh = () => {
-    let url = `${Api.url}/data/2.5/forecast?appid=${Api.key}&units=metric&q=${this.state.city}`;
+    let url = `${Api.url}/data/2.5/forecast?appid=${Api.key}&units=imperial&q=${this.state.city}`;
 
     axios.get(url).then((response) => {
       let forecast = response.data.list;
@@ -33,7 +33,7 @@ export default class Forecast extends Component {
           precipitation: Math.round(forecast[index].main.humidity) + "%",
           temperature: Math.round(forecast[index].main.temp),
           day: new DateUtil(new Date(forecast[index].dt * 1000)).day(true),
-          wind: Math.round(forecast[index].wind.speed) + "km/h",
+          wind: Math.round(forecast[index].wind.speed) + "mph",
         };
       });
       this.setState({ forecast: dailyForecast });
@@ -51,7 +51,7 @@ export default class Forecast extends Component {
                   <WeatherIcon iconName={weather.icon} />
                 </div>
                 <div className="forecast-temperature">
-                  {weather.temperature}°
+                  {weather.temperature}°F
                 </div>
               </div>
             );

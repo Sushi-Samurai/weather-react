@@ -25,7 +25,7 @@ export default class Weather extends Component {
   }
 
   refreshWeatherFromParams(params) {
-    let url = `${Api.url}/data/2.5/weather?appid=${Api.key}&units=metric&${params}`;
+    let url = `${Api.url}/data/2.5/weather?appid=${Api.key}&units=imperial&${params}`;
     axios.get(url).then((response) => {
       this.setState({
         city: response.data.name,
@@ -33,9 +33,9 @@ export default class Weather extends Component {
           description: response.data.weather[0].main,
           icon: response.data.weather[0].icon,
           precipitation: Math.round(response.data.main.humidity) + "%",
-          temperature: Math.round(response.data.main.temp),
+          temperature: Math.round(response.data.main.temp) + "°F",
           time: new DateUtil(new Date(response.data.dt * 1000)).dayTime(),
-          wind: Math.round(response.data.wind.speed) + "km/h",
+          wind: Math.round(response.data.wind.speed) + "mph",
         },
       });
     });
