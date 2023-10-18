@@ -14,7 +14,7 @@ export default class CurrentLocation extends Component {
 
   render() {
     return (
-      <button className="float-left btn btn-success" onClick={this._click}>
+      <button className="btn btn-success float-right" onClick={this._click}>
         Current
       </button>
     );
